@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>position</title>
+  <style>
+    .sibling {
+      padding: 5px;
+      background-color: #eee;
+      text-align: center;
+    }
+
+    .parent {
+      border: 1px dashed #aaa;
+      padding: 10px;
+    }
+
+    .child {
+      width: 60px;
+      height: 60px;
+      padding: 20px;
+      background-color: #dc3636;
+      text-align: center;
+      color: #fff;
+      font-weight: bold;
+      border: 1px solid #333;
+    }
+
+    .static {
+      position: static;
+    }
+
+    .relative {
+      position: relative;
+    }
+    
+    .absolute {
+      position: absolute;
+    }
+
+    .fixed {
+      position: fixed;
+    }
+  </style>
+</head>
+<body>
+  <h1>position</h1>
+  <h2>static (기본)</h2>
+  <div class="parent">
+    <div class="sibling">Sibling 1</div>
+    <div class="child static">static</div>
+    <div class="sibling">Sibling 2</div>
+  </div>
+
+  <h2>relative</h2>
+  <div class="parent">
+    <div class="sibling">Sibling 1</div>
+    <div class="child relative">relative</div>
+    <div class="sibling">Sibling 2</div>
+  </div>
+
+  <h2>absolute</h2>
+  <div class="parent">
+    <div class="sibling">Sibling 1</div>
+    <!-- absolute, fixed는 inline요소일때 display:block으로 변경시킴. 
+        inline-block 값을 임의 지정했을 때는 그 값을 유지함. -->
+    <span class="child absolute">absolute</span>
+    <div class="sibling">Sibling 2</div>
+  </div>
+
+  <h2>fixed</h2>
+  <div class="parent">
+    <div class="sibling">Sibling 1</div>
+    <!-- 현재 fixed는 offset값이 없어 뷰포트 밖으로 밀려나오면서 화면 아래로 사라짐 -->
+    <div class="child fixed">fixed</div>
+    <div class="sibling">Sibling 2</div>
+  </div>
+
+</body>
+</html>
