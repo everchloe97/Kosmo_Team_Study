@@ -1,0 +1,17 @@
+-- 스터디그룹
+-- 1장
+SELECT * FROM employee;
+SELECT * FROM employees;
+SELECT job, COUNT(job) FROM employee GROUP BY job;
+SELECT job, COUNT(job) AS "평균이상자" FROM employee WHERE salary > (SELECT AVG(salary) FROM employee) GROUP BY job;
+
+-- 2장
+SELECT job_id,count(*) FROM employees GROUP BY job_id HAVING COUNT(*) > 2;
+SELECT eno, ename, salary FROM employee WHERE dno != 10 GROUP BY eno, ename, salary HAVING salary >= (SELECT AVG(salary) FROM employee WHERE dno != 10) ;
+
+SELECT eno, ename, salary FROM employee WHERE dno != 10 GROUP BY eno, ename, salary;
+SELECT eno,ename, salary FROM (SELECT eno, ename, salary FROM employee WHERE dno != 10) WHERE salary >  (SELECT AVG(salary) FROM employee WHERE dno != 10);
+
+-- 3장
+SELECT * FROM employee INNER JOIN department ON employee.dno = department.dno;
+SELECT eno, ename, manager, dname , loc FROM (SELECT * FROM employee INNER JOIN department ON employee.dno = department.dno);

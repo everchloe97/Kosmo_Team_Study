@@ -1,0 +1,16 @@
+-- 스터디그룹
+-- 1장
+SELECT * FROM employee A INNER JOIN department B ON SUBSTR(A.ename,1,1) = SUBSTR(B.loc,1,1);
+SELECT ename, first_name, phone_number FROM employee A INNER JOIN employees B ON ename = UPPER(first_name);
+
+-- 2장
+SELECT A.employee_id, A.first_name, A.manager_id, B.employee_id, B.first_name FROM employees A INNER JOIN employees B ON A.manager_id=B.employee_id ;
+SELECT B.employee_id,B.first_name,count(*) "매니저의 담당 사원 수" FROM employees A INNER JOIN employees B ON A.manager_id=B.employee_id GROUP BY B.employee_id, B.first_name;
+
+-- 3장
+SELECT ename,job,dname,loc FROM employee A,department B WHERE A.dno = B.dno;
+SELECT A.eno,A.ename,B.dname,A.dno FROM employee A, department B WHERE A.dno = B.dno AND A.eno = 7788;
+
+-- 4장
+SELECT * FROM employee A INNER JOIN department B ON A.dno = B.dno INNER JOIN salgrade C ON A.salary BETWEEN C.losal AND C.hisal;
+SELECT eno,ename,dname,loc,grade FROM (SELECT * FROM employee A INNER JOIN department B ON A.dno = B.dno INNER JOIN salgrade C ON A.salary BETWEEN C.losal AND C.hisal) WHERE grade > 3 ORDER BY grade DESC;

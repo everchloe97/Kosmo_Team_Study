@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--1. 메뉴 구조, 2. form 만들기, 3. 연결-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="" type = text/css href=real.css">
+</head>
+
+<body>
+        <section id="form">
+            <h3>폼 요소</h3>
+            <div class="content">
+                <form action="action.jsp" method="POST">
+                    <h4>회원가입</h4>
+
+                    <fieldset>
+                        <legend class="blind">회원가입</legend>
+
+                        <label class="title" for="id">아이디</label>
+                        <input type="text" id="id" name="id">
+                        <br>
+
+                        <label class="title" for="pw">비밀번호</label>
+                        <input type="password" id="pw" name="pw">
+                        <br>
+
+                        <div class="title">생년월일</div>
+                        <div class="select-wrap">
+                            
+                            <select name="yy" id="yy">
+                                <option>년도</option>
+                                <option value="2021">2019</option>
+                                <option value="2020">2018</option>
+                                <option value="2019">2017</option>
+                                <option value="2018">2016</option>
+                            </select>
+                            <label class="blind" for="yy">년도</label>
+
+                           
+                            <select name="mm" id="mm">
+                                <option>월</option>
+                                <option value="01">1</option>
+                                <option value="02">2</option>
+                                <option value="03">3</option>
+                                <option value="04">4</option>
+                            </select>
+                            <label class="blind" for="mm">월</label>
+
+                            <select name="dd" id="dd">
+                                <option>일</option>
+                                <option value="01">1</option>
+                                <option value="02">2</option>
+                                <option value="03">3</option>
+                                <option value="04">4</option>
+                            </select>
+                            <label class="blind" for="dd">일</label>
+                        </div>
+
+                        <div class="title">성별</div>
+                        <span class="radio-span">
+                            <input type="radio" name="gender" id="male" value="male" checked><label
+                                for="male">남자</label>
+                        </span>
+                        <span class="radio-span">
+                            <input type="radio" name="gender" id="female" value="female"><label for="female">여자</label>
+                        </span>
+                        <br>
+
+                        <label class="title" for="email">이메일</label>
+                        <input type="text" id="email" name="email" placeholder="@를 포함해주세요.">
+                        <br>
+
+                        <label class="title" for="mobile">휴대전화</label>
+                        <div class="mobile-area">
+                            <input type="text" id="mobile" name="mobile" placeholder="숫자만 입력해주세요."><button
+                                class="certification-btn" type="button">인증번호 받기</button>
+                        </div>
+                        <label class="blind" for="certification">인증번호</label>
+                        <input class="certification-number" type="text" id="certification" name="certification"
+                            placeholder="인증번호를 입력해주세요.">
+
+                        <div class="title" id="hobby">취미</div>
+                        <span class="checkbox-span">
+                            <input type="checkbox" id="exercise" name="hobby" value="exercise"> <label
+                                for="exercise">운동</label>
+                        </span>
+                        <span class="checkbox-span">
+                            <input type="checkbox" id="cook" name="hobby" value="cook"> <label for="cook">요리</label>
+                        </span>
+                        <span class="checkbox-span">
+                            <input type="checkbox" id="travel" name="hobby" value="travel"> <label
+                                for="travel">여행</label>
+                        </span>
+                        <span class="checkbox-span">
+                            <input type="checkbox" id="game" name="hobby" value="game"> <label for="game">게임</label>
+                        </span>
+                        <br>
+
+                        <label class="title" for="hi">가입인사</label>
+                        <br>
+                        <textarea name="hi" id="hi" cols="20" rosw="50"></textarea>
+                        <br>
+
+                        <button class="join_btn" type="submit">가입하기</button>
+                    </fieldset>
+                </form>
+            </div>
+
+        </section>
+    </body>
+
+
+    </html>
+
+
+
+</body>
+
+</html>

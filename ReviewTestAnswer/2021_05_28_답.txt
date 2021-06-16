@@ -1,0 +1,27 @@
+---------------------스터디그룹--------------------------------
+-- 1장
+SELECT ename, job FROM employee WHERE job = (SELECT job FROM employee WHERE eno = 7788);
+
+SELECT * FROM employee A INNER JOIN department B ON A.dno = B.dno;
+SELECT eno,ename,salary,dname,loc FROM (SELECT * FROM employee A INNER JOIN department B ON A.dno = B.dno) WHERE salary > (SELECT salary FROM employee WHERE ename = 'SCOTT');
+
+-- 2장     
+SELECT eno, ename FROM (SELECT eno, ename, ROWNUM FROM (SELECT eno, ename, salary, commission,
+       CASE 
+       WHEN commission = 0 THEN salary + 1000
+       ELSE salary + NVL(commission,2000)
+       END AS A        
+       FROM employee ORDER BY A DESC)) WHERE ROWNUM < 10;
+
+-- 3장
+    -- 부서별 평균 급여
+SELECT dname,ROUND(AVG(salary),1) AS A FROM employee A INNER JOIN department B ON A.dno = B.dno GROUP BY dname;
+    -- 최댓 값
+SELECT MAX(A) FROM (SELECT dname,ROUND(AVG(salary),1) AS A FROM employee A INNER JOIN department B ON A.dno = B.dno GROUP BY dname);
+    -- 두번 째 값
+SELECT MAX(A) AS "2번째 큰 값" FROM (SELECT dname,ROUND(AVG(salary),1) AS A FROM employee A INNER JOIN department B ON A.dno = B.dno GROUP BY dname)
+WHERE A != (SELECT MAX(A) FROM (SELECT dname,ROUND(AVG(salary),1) AS A FROM employee A INNER JOIN department B ON A.dno = B.dno GROUP BY dname));
+
+-- 4장
+SELECT ename || '은 ' || dname || '의 부서 소속이고 ' || loc || '위치에서 근무하고 있습니다.' AS "SCOTT이 존재할 경우" 
+FROM (SELECT * FROM employee A INNER JOIN department B ON A.dno = B.dno) WHERE EXISTS (SELECT ename FROM employee WHERE ename = 'SCOTT');

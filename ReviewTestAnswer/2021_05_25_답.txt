@@ -1,0 +1,51 @@
+-- 2021.05.25. 화요일
+-- 1장
+@C:\temp\EMP_EXAMPLE.sql
+SELECT * FROM employee;
+
+-- 2장
+SELECT AVG(salary) FROM employee;
+SELECT eno, ename, salary FROM employee WHERE salary >= (SELECT AVG(salary) FROM employee);
+SELECT eno, ename, salary, salary +300 AS "300을 더한 월급" FROM employee WHERE salary <= (SELECT AVG(salary) FROM employee);
+
+
+-- 3장
+SELECT commission, NVL(commission,0),  NVL(commission,100) FROM employee;
+SELECT commission, NVL(commission,(SELECT MIN(salary) FROM employee)) AS "salary 최솟값 추가" FROM employee;
+
+-- 4장
+SELECT job, CASE WHEN job = 'CLERK' THEN '사무원' 
+                 WHEN job = 'MANAGER' THEN '매니저'
+                 WHEN job = 'SALESMAN' THEN '판매원'
+                 WHEN job = 'ANALYST' THEN '분석가'
+                 WHEN job = 'PRESIDENT' THEN '대표'
+                 WHEN job = '의적' THEN '홍길동'
+                 ELSE '입력되지 않는 직업' 
+                 END AS "한글부서"
+                 FROM employee;
+                 
+SELECT commission, CASE WHEN commission=0 THEN (SELECT MIN(salary) FROM employee)
+                        ELSE NVL(commission,(SELECT MIN(salary) FROM employee))
+                        END AS "0인사람 추가"
+                        FROM employee;
+                 
+ -- 5장
+SELECT TO_CHAR(hiredate,'YY-MM-DD'),SUBSTR(hiredate,1,2),SUBSTR(hiredate,4,2),SUBSTR(hiredate,7,2) FROM employee;
+                
+SELECT eno,ename,job,hiredate,
+                         CASE 
+                         WHEN SUBSTR(TRIM(hiredate),1,2)='80' THEN '80년도 입사자'
+                         WHEN SUBSTR(TRIM(hiredate),1,2)='81' THEN '81년도 입사자'
+                         WHEN SUBSTR(TRIM(hiredate),1,2)='82' THEN '82년도 입사자'
+                         WHEN SUBSTR(TRIM(hiredate),1,2)='83' THEN '83년도 입사자'
+                         WHEN SUBSTR(TRIM(hiredate),1,2)='84' THEN '84년도 입사자'
+                         ELSE '85년도 이후 입사자'
+                         END AS 입사자
+                         FROM employee;
+                 
+-- 6장
+
+SELECT hiredate,next_day(hiredate,1) FROM employee;
+SELECT hiredate, ROUND(sysdate-hiredate,2), ADD_MONTHS(hiredate,3),(hiredate+(INTERVAL'1'YEAR)) FROM employee;
+
+SELECT ROUND(AVG(ROUND(sysdate-hiredate,2)),2) AS "평균 근속일수" FROM employee;

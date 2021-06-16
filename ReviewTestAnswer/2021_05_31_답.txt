@@ -1,0 +1,84 @@
+-- 스터디그룹
+-- 1장
+-- 경력을 입력받은 사람들에 대한 new_employee 데이터를 추가하였다. 
+-- 각 dno에 일치하는 dname과 loc를 department에 FOREIGN KEY로 참조하여라.
+-- 또한 여기서 JOB과 경력에 따라서 SALARY를 입력하고 그 입력 받은 값을 새로운 테이블로 복사하여라. 기준은 아래와 같다.
+-- job salary 기본급 기준 : CLERK(500), PRESIDENT(1000), SALESMAN(700), MANAGER(900), ANALYST(800)
+-- career salary 기준 : 1~3년(10%), 4~6년(20%), 7~9년(30%), 10년 이상(50%)
+-- <예시> CLERK 7년의 경우 salary = 500 + (500*0.3);
+DROP TABLE new_emp;
+CREATE TABLE new_emp(
+    eno NUMBER(4) CONSTRAINT new_emp_eno_pk PRIMARY KEY,
+    ename VARCHAR2(10),
+    job VARCHAR2(10),
+    dno NUMBER(2) CONSTRAINT new_emp_dno_fk REFERENCES department, 
+    salary NUMBER(10) CONSTRAINT new_emp_salary_min CHECK (salary>=0),
+    career NUMBER(3) DEFAULT 0  
+);
+
+INSERT INTO new_emp VALUES(1,'HONG','CLERK',10,0,1);
+INSERT INTO new_emp VALUES(2,'KIM','CLERK',20,0,2);
+INSERT INTO new_emp VALUES(3,'LEE','PRESIDENT',30,0,12);
+INSERT INTO new_emp VALUES(4,'JANG','SALESMAN',40,0,4);
+INSERT INTO new_emp VALUES(5,'GUK','MANAGER',10,0,8);
+INSERT INTO new_emp VALUES(6,'GWAK','MANAGER',20,0,7);
+INSERT INTO new_emp VALUES(7,'PARK','ANALYST',30,0,3);
+
+SELECT eno,ename,job,dno, CASE 
+                          WHEN job = 'CLERK' THEN 500
+                          WHEN job = 'PRESIDENT' THEN 1000
+                          WHEN job = 'SALESMAN' THEN 700
+                          WHEN job = 'MANAGER' THEN 900
+                          WHEN job = 'ANALYST' THEN 800
+                          END AS A, career
+                          FROM new_emp;
+                
+SELECT eno,ename,job,dno,CASE 
+                          WHEN career >= 1 AND career <= 3  THEN (A + A*0.1)
+                          WHEN career >= 4 AND career <= 6  THEN (A + A*0.2)
+                          WHEN career >= 7 AND career <= 9  THEN (A + A*0.3)
+                          WHEN career >= 10 THEN (A + A*0.5)
+                          ELSE A
+                          END AS "보정된 결과 값"
+                          FROM (SELECT eno,ename,job,dno, CASE 
+                           WHEN job = 'CLERK' THEN 500
+                           WHEN job = 'PRESIDENT' THEN 1000
+                           WHEN job = 'SALESMAN' THEN 700
+                           WHEN job = 'MANAGER' THEN 900
+                           WHEN job = 'ANALYST' THEN 800
+                           END AS A, career
+                           FROM new_emp);
+
+CREATE TABLE adjusted_new_emp AS (SELECT eno,ename,job,dno,CASE 
+                          WHEN career >= 1 AND career <= 3  THEN (A + A*0.1)
+                          WHEN career >= 4 AND career <= 6  THEN (A + A*0.2)
+                          WHEN career >= 7 AND career <= 9  THEN (A + A*0.3)
+                          WHEN career >= 10 THEN (A + A*0.5)
+                          ELSE A
+                          END AS "보정된 결과 값"
+                          FROM (SELECT eno,ename,job,dno, CASE 
+                           WHEN job = 'CLERK' THEN 500
+                           WHEN job = 'PRESIDENT' THEN 1000
+                           WHEN job = 'SALESMAN' THEN 700
+                           WHEN job = 'MANAGER' THEN 900
+                           WHEN job = 'ANALYST' THEN 800
+                           END AS A, career
+                           FROM new_emp));
+SELECT * FROM new_emp;
+SELECT * FROM adjusted_new_emp;
+
+
+-- 2장
+CREATE TABLE department_example AS SELECT * FROM department;
+CREATE SEQUENCE prac_dno_seq INCREMENT BY 10 START WITH 50;
+
+INSERT INTO department_example VALUES(prac_dno_seq.NEXTVAL,'재무','서울');
+INSERT INTO department_example VALUES(prac_dno_seq.NEXTVAL,'웹개발','제주');
+INSERT INTO department_example VALUES(prac_dno_seq.NEXTVAL,'디자인','부산');
+
+SELECT * FROM department_example;
+
+DROP SEQUENCE prac_dno_seq;
+DELETE FROM department WHERE dno = 70;
+
+--EMPLOYEE의 ENO는 PRIMARY KEY로 중복이 불가하다. 그래서 언젠가는 중복된 데이터가 들어갈 것이므로 에러가 발생한다.
