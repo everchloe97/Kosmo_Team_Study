@@ -1,0 +1,490 @@
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%> <%@ page import="java.io.PrintWriter"%> -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Kosmos job</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="/slick/slick-theme.css"/>
+
+        <script type="text/javascript" src="slick/jquery.js"></script>
+        <script type="text/javascript" src="slick/slick.js"></script>
+
+        <!-- 로고 이미지 logo free text site 활용-->
+        <!-- 전체 이미지 Unsplash site 활용-->
+        <style>
+            body,
+            html {
+                width: 100%;
+            }
+            /* Remove the navbar's default margin-bottom and rounded borders */
+            .navbar {
+                background-color: rgb(221, 238, 235);
+                margin-bottom: 0;
+                border-radius: 0;
+               
+            }
+
+            h1 {
+                font-family: Georgia, 'Times New Roman', Times, serif;
+            }
+
+            .navbar-brand {
+                position: relative;
+                background: url("images/keria.png");
+                width: 80px;
+                height: 50px;
+                background-size: cover;
+                background-position: center;
+            }
+
+            /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+            .row.content {
+                height: 100%;
+            }
+
+            /* Set gray background color and 100% height */
+            .sidenav {
+                padding-top: 20px;
+                background-color: white;
+                height: 100%;
+            }
+
+            .carousel {
+                width: 80%;
+                margin-left: 11%;
+            }
+
+            .flex-container {
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: center;
+                font-style: italic;
+            }
+
+            .flex-container > div {
+                background-color: rgb(245, 237, 237);
+                width: 30%;
+                margin: 20px 10px 10px;
+                text-align: center;
+                line-height: 30px;
+                font-size: 15px;
+                font-weight: bold;
+                border-radius: 10px;
+            }
+
+            .flex-container > p {
+                font-size: 120px;
+            }
+
+            .flex-container2 {
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: center;
+                font-style: italic;
+            }
+
+            .flex-container2 > div {
+                background-color: black;
+                width: 30%;
+                margin: 20px 10px;
+                text-align: center;
+                line-height: 20px;
+                font-size: 15px;
+                font-weight: bold;
+                border-radius: 10px;
+            }
+
+            footer {
+                background-color: rgb(221, 238, 235);
+                color: black;
+                padding: 15px;
+                text-align: center;
+            }
+
+            #fixed {
+                position: fixed;
+                bottom: 10%;
+                right: 10px;
+                width: 100px;
+                padding: 5px;
+                color: black;
+            }
+        </style>
+    </head>
+
+    <!-- S: body ======================================================================================================-->
+
+    <body>
+        <!-- <% String userID = null; if (session.getAttribute("userID") != null) {
+        userID = (String) session.getAttribute("userID"); } %> -->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button
+                        type="button"
+                        class="navbar-toggle"
+                        data-toggle="collapse"
+                        data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="main.jsp"></a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+
+                        <li class="nav-item dropdown">
+                            <a
+                                class="nav-link dropdown-toggle"
+                                href="#"
+                                id="navbarDropdown"
+                                role="button"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">IT 직군</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">경영 직군</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a
+                                class="nav-link dropdown-toggle"
+                                href="#"
+                                id="navbarDropdown"
+                                role="button"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">IT 직군</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">경영 직군</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a
+                                class="nav-link dropdown-toggle"
+                                href="#"
+                                id="navbarDropdown"
+                                role="button"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">IT 직군</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">경영 직군</a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- <% if (userID == null) { %> -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="login.jsp">
+                                <span class="glyphicon glyphicon-log-in"></span>
+
+                            </a>
+                        <li>
+                            <a href="join.jsp">
+                                <span class="glyphicon glyphicon glyphicon-user"></span>
+
+                            </a>
+                        </li>
+
+                    </li>
+                </ul>
+
+                <!-- <% } else{ %> -->
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a
+                            href="#"
+                            class="dropddown-toggle"
+                            data-toggle="dropdown"
+                            role="button"
+                            aria-haspopup="true"
+                            aria-expaned="false">Quick menu<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="logoutAction.jsp">LOGOUT</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- <% } %> -->
+
+                <form class="navbar-form navbar-left">
+                    <form class="form-inline">
+                        <input
+                            class="form-control mr-sm-2"
+                            type="search"
+                            placeholder="Search"
+                            aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </div>
+                </div>
+
+            </form>
+        </nav>
+        <!-- nav 끝 ---------------------------------------------------->
+
+        <div class="container-fluid text-center">
+            <div class="row content">
+                <div class="col-sm-1 sidenav">
+                    <p>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-shopping-cart" style="color: black;"></span>
+                        </a>
+                    </p>
+                    <p>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-bell" style="color: black;"></span>
+                        </a>
+                    </p>
+                    <p>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-earphone" style="color: black"></span>
+                        </a>
+                    </p>
+                </div>
+                <div class="col-sm-10 text-left">
+                    <h1 style="text-align: center;">KOSMOS JOB!</h1>
+                    <hr>
+                    <p></p>
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img src="images/job1.jpg" alt="perfume1" style="width: 100%;">
+                            </div>
+
+                            <div class="item">
+                                <img src="images/job2.jpg" alt="perfume2" style="width: 100%;">
+                            </div>
+
+                            <div class="item">
+                                <img src="images/job1.jpg" alt="perfume1" style="width: 100%;">
+                            </div>
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+
+                    <br>
+                    <hr>
+                    <br>
+
+                    <link rel="stylesheet" type="text/css" href="slick/slick.css">
+                    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css">
+
+                    <!-- S : HTML slick slider code-->
+                    <div style="padding:100px 100px; background-color: rgb(221, 238, 235);">
+                        <div id="slider-div">
+                            <div><img src="images/job1.jpg"></div>
+                            <div><img src="images/job2.jpg"></div>
+                            <div><img src="images/job1.jpg"></div>
+                            <div><img src="images/job2.jpg"></div>
+                            <div><img src="images/job1.jpg"></div>
+
+                        </div>
+                    </div>
+                    <!-- E : HTML slick slider code-->
+
+                    <!-- S : JavaScript slick slider code-->
+                    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+                    <script
+                        type="text/javascript"
+                        src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+                    <script type="text/javascript" src="slick/slick.min.js"></script>
+
+                    <script>
+                        $(function () {
+                            $('#slider-div').slick({
+                                slide: 'div', //슬라이드 되어야 할 태그 ex) div, li
+                                infinite: true, //무한 반복 옵션
+
+                                speed: 500, // 다음 버튼 누르고 다음 화면 뜨는데까지 걸리는 시간(ms)
+                                arrows: true, // 옆으로 이동하는 화살표 표시 여부
+                                dots: true, // 스크롤바 아래 점으로 페이지네이션 여부
+                                autoplay: true, // 자동 스크롤 사용 여부
+                                autoplaySpeed: 2000, // 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
+                                pauseOnHover: true, // 슬라이드 이동	시 마우스 호버하면 슬라이더 멈추게 설정
+                                vertical: false, // 세로 방향 슬라이드 옵션
+                                prevArrow: "<button type='button' class='slick-prev'>Previous</button>", // 이전 화살표 모양 설정
+                                nextArrow: "<button type='button' class='slick-next'>Next</button>", // 다음 화살표 모양 설정
+                                dotsClass: "slick-dots", //아래 나오는 페이지네이션(점) css class 지정
+                                draggable: true, //드래그 가능 여부
+
+                            });
+                        })
+                    </script>
+                </script>
+
+                <!-- E : JavaScript slick slider code and <Script> -->
+
+                <hr>
+
+                <div class="container">
+                    <h3 class="text-center">Contact</h3>
+                    <p class="text-center">
+                        <em>Can you send to me a message</em>
+                    </p>
+                    <div class="row test">
+                        <div class="col-md-4">
+                            <p>Thank you</p>
+                            <p>
+                                <span class="glyphicon glyphicon-map-marker"></span>Kosmo 4
+                            </p>
+                            <p>
+                                <span class="glyphicon glyphicon-phone"></span>Phone: +82 01098765432
+                            </p>
+                            <p>
+                                <span class="glyphicon glyphicon-envelope"></span>Email: xorms8@naver.com
+                            </p>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-sm-6 form-group">
+                                    <input
+                                        class="form-control"
+                                        id="name"
+                                        name="name"
+                                        placeholder="Name"
+                                        type="text"
+                                        required="required">
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <input
+                                        class="form-control"
+                                        id="email"
+                                        name="email"
+                                        placeholder="Email"
+                                        type="email"
+                                        required="required">
+                                </div>
+                            </div>
+                            <textarea
+                                class="form-control"
+                                id="comments"
+                                name="comments"
+                                placeholder="Comment"
+                                rows="5"></textarea>
+                            <div class="row">
+                                <div class="col-md-12 form-group">
+                                    <button type="submit" class="btn btn-default">SEND</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer>
+                    <div class="container">
+                        <br>
+                        <div class="footer">
+                            <p style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+                                <span>COMPANY : (주) Keria
+                                </span><span>OWNER : 임태근
+                                </span><span>PRIVACY MANAGER : 임태근</span><br/>
+                                <span>ADDRESS : 서울 특별시 구로구 KOSMO 4층</span><br/>
+                                <span>BUSINESS LICENSE : 1996
+                                </span><span>MALL ORDER LICENSE : Well begun is half done.</span>
+                                <p>Copyright. (주)Keria-임태근 all rights reserved.</p>
+                            </p>
+                        </div>
+                    </div>
+                </footer>
+                <!--S : fixed -->
+                <div id="fixed">
+                    <div style="cursor: pointer;" onclick="window.scrollTo(0,0);">
+                        <span class="glyphicon glyphicon-triangle-top"></span>
+                    </div>
+
+                    <!--S : jquery animete hahahaha -->
+
+                    <script>
+                        $(document).ready(function aa() {
+                            //스타일을 변경합니다
+                            $('#box')
+                                .css({width: 10, height: 100, background: 'rgb(221, 238, 235)'})
+                                .animate({
+                                    width: 500, opacity: 0.8, //불투명도
+                                    //마지막 괄호 닫기 전 2000 <-- 나타내주는 속도
+                                }, 2000)
+                                .animate({
+                                    width: 100,
+                                    height: 100,
+                                    background: 'skyblue'
+                                }, 2000, aa) //aa 위에 function 선언해주고 마지막에 속도 옆에 적으면 반복 !!
+
+                        });
+
+                        $(document).ready(function aa() {
+                            //스타일을 변경합니다
+                            $('#box2')
+                                .css({width: 50, height: 100, background: 'rgb(201, 238, 235)'})
+                                .animate({
+                                    width: 100, height: 200, opacity: 0.8, //불투명도
+                                    //마지막 괄호 닫기 전 2000 <-- 나타내주는 속도
+                                }, 2000)
+                                .animate({
+                                    width: 100,
+                                    height: 100,
+                                    background: 'orange'
+                                }, 2000, aa) //aa 위에 function 선언해주고 마지막에 속도 옆에 적으면 반복 !!
+
+                        });
+                    </script>
+
+                </head>
+                <body>
+                    <h1>광고 문의 주세요</h1>
+                    <div id="box">
+                        <span>챗봇 상담
+                        </span>
+                    </div>
+                    <div id="box2">
+                        <span>이 기능 폐기 ?</span>
+                        <!--E : jquery animete hahahaha -->
+                    </div>
+                    <!--E : fix div-->
+                    <!-- E: body ======================================================================================================-->
+                </body>
+            </html>
