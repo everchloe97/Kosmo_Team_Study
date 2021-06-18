@@ -1,0 +1,142 @@
+@charset "utf-8";
+/* Eric Reset.css */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+    font-family: '나눔고딕', NanumGothic, '돋움', Dotum, sans-serif;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+ol, ul,li {
+	list-style: none;
+}
+
+/* StyleSheet */
+
+a:focus, button:focus {
+    outline-style: none;
+}
+.blind {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(0, 0, 0, 0);
+    margin: -1px;
+    overflow: hidden;
+}
+/**************Timesale***********************/
+
+.timesale {
+    background-color: #d5e43f;
+    background-position: center;
+    height: 1200px;
+    margin: 0 auto;
+}
+/*flex, center, center => 요소 화면 중앙으로 정렬*/
+.timesale ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 100px;
+}
+.timesale ul li {
+    float: left;
+    position: relative;
+    display: block;
+    width: 230px;
+    margin: 0 10px;
+    font-size: 20px;
+    color: #1b1d21;
+    text-decoration: none;
+    text-align: center;
+}
+/*float 해제*/
+.timesale li::after {
+    content: '';
+    clear: both;
+    overflow: hidden;
+}
+.timesale li img{
+    border-radius: 10px;
+}
+/*hidden, ellipsis, nowrap => 줄 넘어가면 말 줄임(...) 처리*/
+.timesale li .name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 10px;
+    margin: 20px 0 10px;
+}
+
+.timesale li .price {
+    height: 30px;
+    margin: 10px 0 60px 0;
+}
+
+.timesale a {
+    display: block;
+    width: 230px;
+    height: 230px;
+}
+/*img위에 절대적으로 위치 고정. 평소엔 안 보이게 흰색, opacity : 0*/
+.timesale .popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom:0;
+    width: 230px;
+    height: 230px;
+    text-align: center;
+    background-color: rgba(96, 132, 2, 0.9);
+    border-radius: 10px;
+    opacity: 0;
+    color: #fff;
+}
+.timesale .popup:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+.timesale a:focus ~ .popup {
+    opacity: 1;
+    cursor: pointer;
+}
+.timesale .popup .percent {
+    margin: 67px 0 10px 0;
+    font-size: 60px;
+    font-weight: 600;
+}
+.timesale .popup .time{
+    margin: 10px 0 68px 0;
+    font-size: 20px;
+}
+/*top button*/
+.top {
+    display: block;
+    position: fixed;
+    right: 0;
+    bottom: 180px;
+}
