@@ -7,3 +7,13 @@ toggleBtn.addEventListener('click', () => {
     icons.classList.toggle('active');
 });
 
+var msnry = new Masonry( '.grid', {
+    itemSelector: '.grid-item',
+    // columnWidth: 200
+    columnWidth: '.grid-sizer',
+    percentPosition: true,
+    gutter : 15,
+    });
+    imagesLoaded( '.grid' ).on( 'progress', function() {
+    msnry.layout();
+    });

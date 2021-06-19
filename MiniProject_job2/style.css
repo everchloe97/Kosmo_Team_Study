@@ -119,6 +119,32 @@ footer {
     color: black;
 }
 
+
+
+
+
+
+
+
+
+.grid { width: 80%; margin: 0 auto; }
+.grid-sizer, .grid-item { width: 23%; }
+/* .grid-sizer, .grid-item { width: 200px; } */
+.grid-item {border:1px solid black; margin-bottom:15px; border-radius: 20px; overflow:hidden;}
+.grid-item img {display: block; min-width:100%; max-width: 100%; }
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* for mobile @media css code line---------------------*/
 
 @media screen and (max-width : 768px) {
