@@ -181,10 +181,37 @@ footer.info-detail{
     color: black;
 }
 
+<<<<<<< HEAD
 .footer{
     font-family:sans-serif;
     background-color: gray;
 }
+=======
+
+
+
+
+
+
+
+
+.grid { width: 80%; margin: 0 auto; }
+.grid-sizer, .grid-item { width: 23%; }
+/* .grid-sizer, .grid-item { width: 200px; } */
+.grid-item {border:1px solid black; margin-bottom:15px; border-radius: 20px; overflow:hidden;}
+.grid-item img {display: block; min-width:100%; max-width: 100%; }
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 566498862d0f3d63ee0b8320c3b5ae8b996c16f8
 
 
 /* for mobile @media css code line---------------------*/
