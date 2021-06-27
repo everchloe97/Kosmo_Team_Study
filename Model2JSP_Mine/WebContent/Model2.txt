@@ -1,0 +1,93 @@
+* Model2의 개발방식
+
+* Model1 (화면+로직+DB => 수정하려면 파일 전체를 바꿔야 한다.Model2는 그렇지 않다)
+ 1. 사용자가 페이지 요청
+ 2. 사용자에게 페이지 응답/DB로 접속
+ 3. 정보를 가져와서 페이지 응답을 처리
+ => 적은 규모의 프로젝트를 진행함에 수월하다(개발시간이 짧다)(장점)(요새는 Model2로 하는게 많아지고 있다)
+
+* Model1은 유지보수가 어렵고,Model2는 쉽다(로직 하나하나를 모듈화해서)
+
+* Model2 개발방식 (화면/로직/DB)
+ 개발자와 디자이너는 서로 각각의 작업을 처리
+ 개발시간이 매우 감소 => 개발 효율성 증가(생산성 향상)
+ 
+ => MVC 패턴 != Model2(똑같진 않고 유사하다) => Model2개발방식을 MVC 패턴을 사용해서 개발
+    M odel : 비즈니스 로직(DB연결 부분)
+    (POJO : Plain Old Java Object)
+    V iew : 화면구현(디자인 부분)
+    C ontroller : Model,View를 연결해서 사용 (Servlet)
+    
+    1. 사용자가 페이지 요청하면
+    2. Controller로 이동,요청을 받아서 View로 갈지 Model로 갈지 결정한다
+    3-1. View로 간다면 실제 페이지로 바로 이동(JSP)
+    3-2. Model로 간다면 페이지(JAVA)로 바로 이동
+    4. DB 처리후 다시 Controller로 이동
+    5. 결과확인을 위해서 View로 이동
+    
+    
+    * Model2 방식(MVC 패턴)
+    
+    - 주소가 가상주소의 형태로 사용 (ex - *.me, *.do, ...)
+    - .jsp 형태의 페이지 노출이 없다 (주소창에 .jsp 노출 X)
+    
+    - 페이지 이동시 상대주소를 사용해 이동한다
+    1) ./Main.me(가상주소)
+    http://localhost:8088/Model2JSP/Main.me
+    => /프로젝트/해당 페이지
+    
+    2) ./main.jsp(실제주소)
+    http://localhost:8088/Model2JSP/member/main.jsp
+    => WebContent/폴더/해당 페이지
+    
+    
+    - Model2 방식의 시작 포인트 => Web.xml
+    - @WebServlet ("*.bo") : 해당 어노테이션으로 Web.xml 방식을 대체 가능하다
+    
+    컨트롤러 페이지(C) - 서블릿(자바와 jsp의 중간쯤)의 형태로 되어 있다. (request, response)를 가질 수 있다. 상속받아서
+    -> 해당 페이지의 이동을 결정한다.
+    	1) 컨트롤러 -> 화면(View) : 회원가입창 (정보 입력창)
+    	2) 화면(View) -> 컨트롤러 -> 처리(Model) : 회원처리 (작업처리)
+    
+    모델 페이지(M)
+    -> Model1의 방식에서 사용된 pro페이지 역할을 한다
+    - 특정 작업 처리
+    - DB 작업 처리 (주 목적) => SQL문 처리 (DAO라는 객체로 처리)
+    - 세션 관리
+    - etc ...
+    
+    뷰 페이지(V)
+    - 화면 (사용자가 직접 보는 페이지)
+    - 디자이너 또는 프론트엔드 개발자가 주로 맡는다 (클라이언트 단) (html/css/javascript/jquery)
+    - DB의 정보를 전달한 것을 받아와서 사용
+    
+    
+    * Model2에서의 페이지 이동 방식
+      1) sendRedirect 방식으로 이동
+      	  response 객체 사용 이동
+      	  A.me -> B.me
+      	  주소 : A.me -> B.me
+      	  내용 : A.me -> B.me
+      	  정보 : request/response 정보는 없다. session/application 정보는 있다.
+      	  
+         - 가상주소 -> 가상주소로 이동시 주로 사용한다
+      
+      2) forward 방식으로 이동
+      RequestDispatcher dis =
+	  request.getRequestDispatcher(이동페이지);
+	
+	  dis.forward(request, response);	
+	
+	  <jsp:forward page="" />
+	
+	  A.me -> B.me(B_view.jsp)
+	
+	    주소 : A.me -> A.me
+             내용 : A.me -> B.me(B_view.jsp)
+	    정보 : request,response,session,application 정보 O
+	    
+	  --------------------------------------------------
+	  
+	  + JavaScript/Jquery/Ajax/JSON
+	  + DB(SQL) 
+	  
