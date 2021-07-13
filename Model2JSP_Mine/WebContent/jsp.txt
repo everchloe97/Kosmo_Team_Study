@@ -1,0 +1,36 @@
+https://history1994.tistory.com/33 - jsp 카테고리 전체 읽어보면 좋다
+
+https://hsp1116.tistory.com/9 - jsp model1, model2, mvc 패턴
+
+------------------------------------------------------------------------------------
+
+commons-collections : java collection framework 상속 확장
+
+commons-dbcp : database connection pooling 서비스 제공, 데이터 소스 org.apache.commons.dbcp.BasicDataSource 사용
+ㄴ pooling 이란? : 만들어놓은 객체를 필요로 할때 사용하고, 반환하는 일련의 작업. 
+                        pool(ex: db connection pool은 db와 연결해놓은 객체들을 모아둔 곳.)에 객체 요청 -> 객체 사용
+                        -> 다시 pool에 객체 반환. 동일한 객체를 생성, 파괴하지 않고, 재사용하기 때문에 자원 관리에 효율적이다
+
+commons-pool : 일반적인 객체 pooling을 제공하는 컴포넌트
+ㄴ 컴포넌트 란? : 독립적인 소프트웨어 단위모듈. 각각의 독립된 모듈
+                      구현, 명세화, 패키지화, 그리고 배포 될 수 있어야 함
+	          하나의 컴포넌트는 하나 이상의 클래스로 구성될 수 있음
+	          인터페이스를 통해서만 접근 가능
+	          소프트웨어의 재사용의 중요성과 필요성을 위해 나온 기술이 컴포넌트 기술
+	          유저가 사용하는 시스템에 대한 조작장치. 통상 컨트롤(Control)이라고도 하고 UI 라고도 함
+
+ㄴ--------------------------------------- commons 붙은거는 apache 재단에서 만든 재사용 가능한 자바 기반의 컴포넌트 모은 통합 프로젝트
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+cos.jar : 파일 업로드할때 필요한 라이브러리
+
+mysql-connector-java : 자바와 mysql(dbms)을 연결하기 위해 필요한 라이브러리. oracle도 있다
+
+taglibs-standard-impl : implement 줄임말. 태그 라이브러리 중에 impl(인터페이스 구현하는것)꺼
+
+* jstl api + 번들 라이브러리 (jstl.jar) 다운받았으면 taglib 받지 않아도 된다
+
+taglibs-jstlel : jstl, el 모아놓은거
+
+spec : 자세히 상술해놓은 jar파일

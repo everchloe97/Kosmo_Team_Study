@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context>
+	<Resource
+	 name="jdbc/model2jspdb"
+	 auth="Container"
+	 type="javax.sql.DataSource"
+	 driverClassName="com.mysql.jdbc.Driver"
+	 url="jdbc:mysql://localhost/model2jspdb"
+	 username="root"
+	 password="1234"
+	/>
+	
+</Context>
+<!-- context.xml이란 ? : 톰캣에 들어있는 파일로, 웹 어플리케이션의 지원을 명시해주는 파일
+           일종의 객체라고 보면 됨. DB와의 연동을 그나마 편하게 하기 위해 DB와 관련된 정보들을 여기 context.xml파일에 적어준다
+     Tomcat 5.5 이후부터는 context.xml 파일을 분리해 webapplication에서 별도로 자원 등록, 사용할수 있도록 제공
+     META-INF/context.xml 파일을 위치시키면 Tomcat은 구동시 META-INF 폴더의 context.xml 파일을 찾아 존재할 경우 server.xml 파일의 Host 하위 노드로 추가해 구동
+     context.xml 파일의 Context 노드 하위에 resource를 직접 등록하거나 server.xml 파일의 GlobalNamingResource 노드에 resource가 등록되어 있다면 ResourceLink를 등록해 사용하면 됨
+     context 추가 후 web.xml에 resource-ref를 등록하라고 적혀져있다. 그런데 등록하지 않아도 룩업하지만, 꼭 등록하자.
+	  톰캣에서 구동되는 하나의 웹 어플리케이션 자체의 설정을 의미. 주요 설정으로 ContextPath, Application 디렉토리 설정이 있다.
+	  톰캣이 요청을 받으면 Catalina가 요청에 맞는 Context를 찾고, Context는 자신이 설정된 어플리케이션의 deployment description file(web.xml)을 기반으로 전달받은 요청을 서블릿에게 전달해 처리되도록 한다.
+ -->
